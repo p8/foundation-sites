@@ -6,6 +6,8 @@
 /// @group breakpoints
 ////
 
+@use "sass:map";
+
 /// Patch to fix issue #12080
 $-zf-size: null;
 
@@ -38,11 +40,11 @@ $-zf-zero-breakpoint: small !default;
 
 $-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
 
-@if nth(map-values($breakpoints), 1) != 0 {
+@if nth(map.values($breakpoints), 1) != 0 {
   @error 'The first key in the $breakpoints map must have a value of "0".';
 }
 @else {
-  $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
+  $-zf-zero-breakpoint: nth(map.keys($breakpoints), 1);
 }
 
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.

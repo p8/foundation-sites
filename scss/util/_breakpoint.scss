@@ -8,6 +8,7 @@
 
 @use "sass:list";
 @use "sass:string";
+@use "sass:map";
 @use "sass:meta";
 
 /// Patch to fix issue #12080
@@ -42,11 +43,11 @@ $-zf-zero-breakpoint: small !default;
 
 $-zf-breakpoints-keys: map-to-list($breakpoints, 'keys');
 
-@if list.nth(map-values($breakpoints), 1) != 0 {
+@if list.nth(map.values($breakpoints), 1) != 0 {
   @error 'The first key in the $breakpoints map must have a value of "0".';
 }
 @else {
-  $-zf-zero-breakpoint: list.nth(map-keys($breakpoints), 1);
+  $-zf-zero-breakpoint: list.nth(map.keys($breakpoints), 1);
 }
 
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.

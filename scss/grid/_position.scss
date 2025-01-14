@@ -6,6 +6,7 @@
 /// @group grid
 ////
 
+@use "sass:math";
 @use "sass:meta";
 
 /// Reposition a column.
@@ -34,7 +35,7 @@
 
   // Push/pull
   @else if meta.type-of($position) == 'number' {
-    $offset: percentage(divide($position, $grid-column-count));
+    $offset: math.percentage(divide($position, $grid-column-count));
 
     position: relative;
     #{$global-left}: $offset;
